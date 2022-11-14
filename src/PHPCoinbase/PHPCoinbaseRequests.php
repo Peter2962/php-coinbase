@@ -19,12 +19,20 @@ class PHPCoinbaseRequests
 	protected $client;
 
 	/**
-	 * PHPCoinbase
+	 * PHPCoinbase api key
 	 * 
 	 * @var $apiKey
 	 * @access protected
 	 */
 	protected $apiKey;
+
+	/**
+	 * PHPCoinbase api secret
+	 * 
+	 * @var $apiKey
+	 * @access protected
+	 */
+	protected $apiSecret;
 
 	/**
 	 * Coinbase api url
@@ -54,6 +62,7 @@ class PHPCoinbaseRequests
 	{
 		$this->defaultHeaders = $defaultHeaders;
 		$this->apiKey = PHPCoinbase::getApiKey();
+		$this->apiSecret = PHPCoinbase::getApiSecret();
 	}
 
 	/**
@@ -135,10 +144,24 @@ class PHPCoinbaseRequests
 	 */
 	protected function resolveRequest(String $method, String $url, Array $headers = [], Array $data = [])
 	{
+		$timestamp = time();
+		$version = '2015-07-22';
+		$data = bin2hex($timestamp . $method . $url . json_encode($data));
+		$signature = hash_hmac('sha256', $data, $this->apiSecret);
+
+		$newDefaultHeaders = [
+			'CB-VERSION' => $version,
+			'CB-ACCESS-SIGN' => $signature,
+			'CB-ACCESS-KEY' => $this->apiKey,
+			'CB-ACCESS-TIMESTAMP' => $timestamp
+		];
+		
 		$mergedHeaders = array_merge(
 			$this->defaultHeaders,
+			$newDefaultHeaders,
 			$headers
 		);
+		
 		$requestUrl = $this->apiUrl . $url;
 		$request = new Request(
 			$method,

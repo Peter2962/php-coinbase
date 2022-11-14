@@ -38,16 +38,26 @@ class PHPCoinbase
 	 * @access private
 	 * @static
 	 */
-	private static $apiKey = null;
+	private static $apiKey;
+
+	/**
+	 * Coinbase api secret
+	 * 
+	 * @var $apiSecret
+	 * @access private
+	 * @static
+	 */
+	private static $apiSecret;
 
 	/**
 	 * PHPCoinbase constructor
 	 * 
 	 * @param $apiKey String Coinbase api key
+	 * @param $apiSecret String Coinbase api secret
 	 * @access public
 	 * @return void
 	 */
-	public function __construct(String $apiKey = null)
+	public function __construct(String $apiKey = null, String $apiSecret = null)
 	{
 		self::$apiKey = $apiKey;
 	}
@@ -75,6 +85,31 @@ class PHPCoinbase
 	public static function getApiKey(): String|null
 	{
 		return self::$apiKey;
+	}
+
+	/**
+	 * Set api secret statically
+	 * 
+	 * @param $apiSecret String
+	 * @access public
+	 * @static
+	 * @return void
+	 */
+	public static function setApiSecret(String $apiSecret)
+	{
+		self::$apiSecret = $apiSecret;
+	}
+
+	/**
+	 * Returns set api secret statically
+	 * 
+	 * @access public
+	 * @static
+	 * @return string | null
+	 */
+	public static function getApiSecret(): String|null
+	{
+		return self::$apiSecret;
 	}
 
 }
