@@ -14,8 +14,9 @@ class PHPCoinbase
 	 * 
 	 * @var $services Array
 	 * @access private
+	 * @static
 	 */
-	private $services = [
+	private static $services = [
 		'Wallets' => [
 			'paymentMethods'
 		],
