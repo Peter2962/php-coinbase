@@ -13,9 +13,10 @@ trait Callables
 	 * 
 	 * @param $serviceName String
 	 * @access public
+	 * @static
 	 * @throws PHPCoinbase\PHPCoinbaseException
 	 */
-	public function __callStatic(String $serviceName, Array $arguments): Mixed
+	public static function __callStatic(String $serviceName, Array $arguments): Mixed
 	{
 		$registeredServices = self::$services;
 		$qualifiedServiceName = self::getQualifiedServiceName($serviceName);
