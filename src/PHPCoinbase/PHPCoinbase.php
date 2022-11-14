@@ -27,8 +27,9 @@ class PHPCoinbase
 	 * 
 	 * @var $apiKey
 	 * @access private
+	 * @static
 	 */
-	private $apiKey;
+	private static $apiKey;
 
 	/**
 	 * PHPCoinbase constructor
