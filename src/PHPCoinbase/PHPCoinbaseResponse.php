@@ -55,7 +55,7 @@ class PHPCoinbaseResponse
 	 */
 	public function getData()
 	{
-		return $this->response->getBody();
+		return $this->response->getBody()->getContents();
 	}
 
 }
