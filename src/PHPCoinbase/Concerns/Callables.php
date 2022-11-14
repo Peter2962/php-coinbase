@@ -2,6 +2,7 @@
 
 namespace PHPCoinbase\Concerns;
 
+use PHPCoinbase\Concerns\Constants;
 use PHPCoinbase\PHPCoinbaseException;
 
 trait Callables
@@ -17,11 +18,17 @@ trait Callables
 	public function __callStatic(String $serviceName, Array $arguments): Mixed
 	{
 		$registeredServices = self::$services;
-		$serviceKeyNames = array_keys($registeredServices);
 		$qualifiedServiceName = self::getQualifiedServiceName($serviceName);
 		if (!self::isServiceRegistered($qualifiedServiceName)) {
-			throw new PHPCoinbaseException();
+			throw new PHPCoinbaseException(
+				Constants::SERVICE_UNREGISTERED
+			);
 		}
+
+		return self::callRequiredResource(
+			$qualifiedServiceName,
+			$arguments
+		);
 	}
 
 	/**
@@ -34,7 +41,11 @@ trait Callables
 	 */
 	protected static function getQualifiedServiceName(String $serviceName): String
 	{
-		return str_replace(['use', 'Service'], ['', ''], $serviceName);
+		return str_replace(
+			['use', 'Service'],
+			['', ''],
+			ucfirst($serviceName)
+		);
 	}
 
 	/**
@@ -51,6 +62,20 @@ trait Callables
 		}
 
 		return false;
+	}
+
+	/**
+	 * Calls a resource method returned as the service parameter.
+	 * 
+	 * @param $serviceName String
+	 * @param $serviceArguments Array
+	 * @access private
+	 */
+	private static function callRequiredResource(String $serviceName, Array $serviceArguments)
+	{
+		$serviceNamespace = "\\PHPCoinbase\\Services\\$serviceName\\";
+		$resource = ucfirst($serviceArguments[0]);
+		$resourceClass = $serviceNamespace . "$resource::class";
 	}
 
 }

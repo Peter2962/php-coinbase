@@ -24,6 +24,14 @@ class PHPCoinbaseRequests
 	 */
 	protected $base;
 
+	/**
+	 * Coinbase api url
+	 * 
+	 * @var $apiUrl String
+	 * @access protected
+	 */
+	protected $apiUrl = 'https://api.coinbase.com/v2/';
+
 	public function __construct(PHPCoinbase $base)
 	{
 		$this->base = $base;
