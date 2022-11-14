@@ -3,20 +3,13 @@
 namespace PHPCoinbase\Services\Wallets\Resources;
 
 use PHPCoinbase\PHPCoinbase;
-use PHPCoinbase\PHPCoinbaseRequests;
+use PHPCoinbase\Concerns\InteractsWithResource;
 
 class PaymentMethods
 {
 
-	/**
-	 * PaymentMethods wallet service constructor
-	 * 
-	 * @param $base PHPCoinbase\PHPCoinbase|null
-	 * @access public
-	 */
-	public function __construct()
-	{
-		//
-	}
+	use InteractsWithResource;
+
+	public function list();
 
 }
