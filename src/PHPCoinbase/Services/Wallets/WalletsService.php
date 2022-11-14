@@ -2,7 +2,7 @@
 
 namespace PHPCoinbase\Services\Wallets;
 
-namespace PHPCoinbase\Services\BaseService;
+use PHPCoinbase\Services\BaseService;
 
 class WalletsService extends BaseService
 {

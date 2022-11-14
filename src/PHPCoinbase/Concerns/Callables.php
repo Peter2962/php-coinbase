@@ -42,11 +42,11 @@ trait Callables
 	 */
 	protected static function getQualifiedServiceName(String $serviceName): String
 	{
-		return str_replace(
+		return ucfirst(str_replace(
 			['use', 'Service'],
 			['', ''],
-			ucfirst($serviceName)
-		);
+			$serviceName
+		));
 	}
 
 	/**
@@ -74,7 +74,7 @@ trait Callables
 	 */
 	private static function callRequiredResource(String $serviceName, Array $serviceArguments)
 	{
-		$serviceNamespace = "\\PHPCoinbase\\Services\\$serviceName\Service::class";
+		$serviceNamespace = "\\PHPCoinbase\\Services\\$serviceName\\$serviceName" . "Service";
 		return new $serviceNamespace();
 	}
 
