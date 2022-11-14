@@ -1,8 +1,14 @@
 {
-	"name": "php-coinbase",
+	"name": "php-coinbase/php-coinbase",
 	"version": "1.0.0",
 	"type": "library",
 	"license": "MIT",
+	"description": "PHP based coinbase api library",
+	"keywords": [
+		"php",
+		"crypto",
+		"coinbase"
+	],
 	"authors": [
 		{"name": "Peter Taiwo"}
 	],
@@ -11,5 +17,7 @@
 			"PHPCoinbase\\": "src/PHPCoinbase/"
 		}
 	},
-	"require": {}
+	"require": {
+		"guzzlehttp/guzzle": "^7.5"
+	}
 }
