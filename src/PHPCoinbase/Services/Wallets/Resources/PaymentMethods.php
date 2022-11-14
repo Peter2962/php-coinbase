@@ -13,7 +13,7 @@ class PaymentMethods
 	 * @param $base PHPCoinbase\PHPCoinbase
 	 * @access public
 	 */
-	public function __construct(PHPCoinbase $base)
+	public function __construct(PHPCoinbase|null $base)
 	{
 		//
 	}

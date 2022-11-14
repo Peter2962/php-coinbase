@@ -12,7 +12,10 @@ trait InteractsWithService
 	 */
 	public function __get(String $serviceName)
 	{
-		//
+		$serviceName = ucfirst($serviceName);
+		$resource = $this->namespace . "\\" . $serviceName;
+
+		return new $resource();
 	}
 
 }

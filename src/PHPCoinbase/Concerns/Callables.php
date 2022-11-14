@@ -75,7 +75,7 @@ trait Callables
 	private static function callRequiredResource(String $serviceName, Array $serviceArguments)
 	{
 		$serviceNamespace = "\\PHPCoinbase\\Services\\$serviceName\\$serviceName" . "Service";
-		return new $serviceNamespace();
+		return new $serviceNamespace("\\PHPCoinbase\\Services\\$serviceName");
 	}
 
 }
