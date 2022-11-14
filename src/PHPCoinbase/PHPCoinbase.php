@@ -30,7 +30,7 @@ class PHPCoinbase
 	 * @access private
 	 * @static
 	 */
-	private static $apiKey;
+	private static $apiKey = null;
 
 	/**
 	 * PHPCoinbase constructor
@@ -55,6 +55,18 @@ class PHPCoinbase
 	public static function setApiKey(String $apiKey)
 	{
 		self::$apiKey = $apiKey;
+	}
+
+	/**
+	 * Returns set api key statically
+	 * 
+	 * @access public
+	 * @static
+	 * @return string | null
+	 */
+	public static function getApiKey(): String|null
+	{
+		return self::$apiKey;
 	}
 
 }

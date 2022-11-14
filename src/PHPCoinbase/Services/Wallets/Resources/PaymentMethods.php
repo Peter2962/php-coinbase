@@ -3,6 +3,7 @@
 namespace PHPCoinbase\Services\Wallets\Resources;
 
 use PHPCoinbase\PHPCoinbase;
+use PHPCoinbase\PHPCoinbaseRequests;
 
 class PaymentMethods
 {
@@ -10,10 +11,10 @@ class PaymentMethods
 	/**
 	 * PaymentMethods wallet service constructor
 	 * 
-	 * @param $base PHPCoinbase\PHPCoinbase
+	 * @param $base PHPCoinbase\PHPCoinbase|null
 	 * @access public
 	 */
-	public function __construct(PHPCoinbase|null $base)
+	public function __construct()
 	{
 		//
 	}
