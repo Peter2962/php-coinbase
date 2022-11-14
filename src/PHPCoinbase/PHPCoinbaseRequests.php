@@ -40,7 +40,7 @@ class PHPCoinbaseRequests
 	 * @var $apiUrl String
 	 * @access protected
 	 */
-	protected $apiUrl = 'https://api.coinbase.com/v2/';
+	protected $apiUrl = 'https://api.coinbase.com';
 
 	/**
 	 * Default headers
@@ -144,9 +144,13 @@ class PHPCoinbaseRequests
 	 */
 	protected function resolveRequest(String $method, String $url, Array $headers = [], Array $data = [])
 	{
+		$pathWithVersion = '/v2/' . $url;
 		$timestamp = time();
-		$data = $timestamp . $method . $url . json_encode($data);
-		$signature = hash_hmac('sha256', $data, $this->apiSecret);
+		$hash = $timestamp . $method . $pathWithVersion;
+		if (count($data) > 0) {
+			$hash .= json_encode($data);
+		}
+		$signature = hash_hmac('sha256', $hash, $this->apiSecret);
 
 		$newDefaultHeaders = [
 			'CB-ACCESS-SIGN' => $signature,
@@ -160,7 +164,7 @@ class PHPCoinbaseRequests
 			$headers
 		);
 		
-		$requestUrl = $this->apiUrl . $url;
+		$requestUrl = $this->apiUrl . $pathWithVersion;
 		$request = new Request(
 			$method,
 			$requestUrl,
