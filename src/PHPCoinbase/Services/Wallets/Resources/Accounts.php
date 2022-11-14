@@ -20,7 +20,9 @@ class Accounts
 	 */
 	public function listAccounts()
 	{
-		
+		return $this->client->get(
+			'accounts'
+		);
 	}
 
 	/**
