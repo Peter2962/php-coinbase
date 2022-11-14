@@ -145,12 +145,10 @@ class PHPCoinbaseRequests
 	protected function resolveRequest(String $method, String $url, Array $headers = [], Array $data = [])
 	{
 		$timestamp = time();
-		$version = '2015-07-22';
-		$data = bin2hex($timestamp . $method . $url . json_encode($data));
+		$data = $timestamp . $method . $url . json_encode($data);
 		$signature = hash_hmac('sha256', $data, $this->apiSecret);
 
 		$newDefaultHeaders = [
-			'CB-VERSION' => $version,
 			'CB-ACCESS-SIGN' => $signature,
 			'CB-ACCESS-KEY' => $this->apiKey,
 			'CB-ACCESS-TIMESTAMP' => $timestamp
@@ -166,10 +164,7 @@ class PHPCoinbaseRequests
 		$request = new Request(
 			$method,
 			$requestUrl,
-			[
-				'headers' => $mergedHeaders,
-				'form_params' => $data
-			]
+			$mergedHeaders
 		);
 		$client = new Client();
 		return new PHPCoinbaseResponse($client->send($request));

@@ -23,21 +23,39 @@ class PHPCoinbaseResponse
 	public function __construct(Response $response)
 	{
 		$this->response = $response;
-		return $this->resolveResponse($response);
 	}
 
 	/**
-	 * @param $response GuzzleHttp\Psr7\Response
-	 * @access protected
-	 * @return Array
+	 * Return's response status.
+	 * 
+	 * @access public
+	 * @return String
 	 */
-	protected function resolveResponse(Response $response)
+	public function getStatus()
 	{
-		return [
-			'status' => $response->getReasonPhrase(),
-			'statusCode' => $response->getStatusCode(),
-			'data' => $response->body()
-		];
+		return $this->response->getReasonPhrase();
+	}
+
+	/**
+	 * Return's response status code.
+	 * 
+	 * @access public
+	 * @return Int
+	 */
+	public function getStatusCode()
+	{
+		return (Int) $this->response->getStatusCode();
+	}
+
+	/**
+	 * Return's response body.
+	 * 
+	 * @access public
+	 * @return Mixed
+	 */
+	public function getData()
+	{
+		return $this->response->getBody();
 	}
 
 }
