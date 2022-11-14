@@ -2,7 +2,7 @@
 
 namespace PHPCoinbase\Services;
 
-abstract BaseService
+class BaseService
 {
-	
+
 }

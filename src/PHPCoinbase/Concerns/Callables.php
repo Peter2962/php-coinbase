@@ -73,9 +73,8 @@ trait Callables
 	 */
 	private static function callRequiredResource(String $serviceName, Array $serviceArguments)
 	{
-		$serviceNamespace = "\\PHPCoinbase\\Services\\$serviceName\\";
-		$resource = ucfirst($serviceArguments[0]);
-		$resourceClass = $serviceNamespace . "$resource::class";
+		$serviceNamespace = "\\PHPCoinbase\\Services\\$serviceName\Service::class";
+		return new $serviceNamespace();
 	}
 
 }

@@ -1,6 +1,5 @@
 {
 	"name": "php-coinbase/php-coinbase",
-	"version": "1.0.0",
 	"type": "library",
 	"license": "MIT",
 	"description": "PHP based coinbase api library",

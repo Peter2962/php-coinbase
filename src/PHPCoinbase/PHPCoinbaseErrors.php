@@ -2,7 +2,7 @@
 
 namespace PHPCoinbase;
 
-abstract class PHPCoinbaseErrors
+class PHPCoinbaseErrors
 {
 
 	/**
