@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPCoinbase\Wallets;
+namespace PHPCoinbase\Services\Wallets;
 
 use PHPCoinbase\PHPCoinbase;
 

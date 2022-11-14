@@ -2,8 +2,12 @@
 
 namespace PHPCoinbase;
 
+use PHPCoinbase\Concerns\Callables;
+
 class PHPCoinbase
 {
+
+	use Callables;
 
 	/**
 	 * List of callable services
@@ -12,11 +16,10 @@ class PHPCoinbase
 	 * @access private
 	 */
 	private $services = [
-		[
-			'useWallets' => [
-				'paymentMethods'
-			]
-		]
+		'Wallets' => [
+			'paymentMethods'
+		],
+		'Data' => []
 	];
 
 	/**
@@ -36,29 +39,20 @@ class PHPCoinbase
 	 */
 	public function __construct(String $apiKey = null)
 	{
-		PHPCoinbase::$apiKey = $apiKey;
+		self::$apiKey = $apiKey;
 	}
 
 	/**
-	 * Call required service dynamically
+	 * Set api key statically
 	 * 
-	 * @param $serviceName String
+	 * @param $apiKey String
 	 * @access public
+	 * @static
+	 * @return void
 	 */
-	public function __call(String $serviceName, Array $arguments) : Mixed
+	public static function setApiKey(String $apiKey)
 	{
-
-	}
-
-	/**
-	 * Call required service dynamically
-	 * 
-	 * @param $serviceName String
-	 * @access public
-	 */
-	public function __callStatic(String $serviceName, Array $arguments) : Mixed
-	{
-
+		self::$apiKey = $apiKey;
 	}
 
 }
