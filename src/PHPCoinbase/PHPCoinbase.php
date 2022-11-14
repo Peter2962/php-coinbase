@@ -20,6 +20,8 @@ class PHPCoinbase
 		'Wallets' => [
 			'buys',
 			'sells',
+			'deposits',
+			'withdrawals',
 			'user',
 			'accounts',
 			'address',
