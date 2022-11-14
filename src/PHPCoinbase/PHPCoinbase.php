@@ -18,6 +18,8 @@ class PHPCoinbase
 	 */
 	private static $services = [
 		'Wallets' => [
+			'buys',
+			'sells',
 			'user',
 			'accounts',
 			'address',
