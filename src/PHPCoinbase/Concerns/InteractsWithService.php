@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPCoinbase\Services;
+namespace PHPCoinbase\Concerns;
 
-class BaseService
+trait InteractsWithService
 {
 
 	/**
