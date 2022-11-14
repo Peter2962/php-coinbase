@@ -5,6 +5,7 @@ namespace PHPCoinbase;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use PHPCoinbase\PHPCoinbase;
+use PHPCoinbase\PHPCoinbaseResponse;
 
 class PHPCoinbaseRequests
 {
@@ -148,7 +149,7 @@ class PHPCoinbaseRequests
 			]
 		);
 		$client = new Client();
-		return $client->send($request);
+		return new PHPCoinbaseResponse($client->send($request));
 	}
 
 }
