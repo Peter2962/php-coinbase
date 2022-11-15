@@ -168,7 +168,8 @@ class PHPCoinbaseRequests
 		$request = new Request(
 			$method,
 			$requestUrl,
-			$mergedHeaders
+			$mergedHeaders,
+			json_encode($data)
 		);
 		$client = new Client();
 		return new PHPCoinbaseResponse($client->send($request));

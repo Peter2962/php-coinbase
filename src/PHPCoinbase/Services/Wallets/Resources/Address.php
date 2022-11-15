@@ -21,7 +21,9 @@ class Address
 	 */
 	public function listAddresses(String $accountId)
 	{
-
+		return $this->client->get(
+			'accounts/'. $accountId .'/addresses'
+		);
 	}
 
 	/**
@@ -33,7 +35,9 @@ class Address
 	 */
 	public function getAddress(String $accountId, String $addressId)
 	{
-
+		return $this->client->get(
+			'accounts/'. $accountId .'/addresses/' . $addressId
+		);
 	}
 
 	/**
@@ -43,20 +47,27 @@ class Address
 	 * @param $addressId String
 	 * @access public
 	 */
-	public function getTransactions(String $accountId, String $addressId)
+	public function listTransactions(String $accountId, String $addressId)
 	{
-
+		return $this->client->get(
+			'accounts/'. $accountId .'/addresses/' . $addressId . '/transactions'
+		);
 	}
 
 	/**
 	 * Creates a new address for an account.
 	 * 
 	 * @param $accountId String
+	 * @param $accoutName String
 	 * @access public
 	 */
-	public function createAddress(String $accountId)
+	public function createAddress(String $accountId, String $accoutName)
 	{
-
+		return $this->client->post(
+			'accounts/'. $accountId .'/addresses/',
+			[],
+			['name' => $accoutName]
+		);
 	}
 
 }

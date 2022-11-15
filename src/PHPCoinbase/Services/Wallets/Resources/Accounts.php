@@ -17,6 +17,7 @@ class Accounts
 	 * List a current user's accounts to which the authentication method has access to.
 	 * 
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
 	public function listAccounts()
 	{
@@ -29,11 +30,17 @@ class Accounts
 	 * Modify a user's account.
 	 * 
 	 * @param $accountId String
+	 * @param $name String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
-	public function updateAccount(String $accountId)
+	public function updateAccount(String $accountId, String $name)
 	{
-
+		return $this->client->update(
+			'accounts/' . $accountId,
+			[],
+			['name' => $name]
+		);
 	}
 
 	/**
@@ -41,21 +48,27 @@ class Accounts
 	 * 
 	 * @param $accountId String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
 	public function getAccount(String $accountId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId
+		);
 	}
 
 	/**
-	 * Show (or get) a current user's account.
+	 * Deleta a user's account.
 	 * 
 	 * @param $accountId String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
 	public function deleteAccount(String $accountId)
 	{
-
+		return $this->client->delete(
+			'accounts/' . $accountId
+		);
 	}
 
 }
