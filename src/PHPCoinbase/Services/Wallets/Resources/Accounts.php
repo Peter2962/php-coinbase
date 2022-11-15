@@ -36,7 +36,7 @@ class Accounts
 	 */
 	public function updateAccount(String $accountId, String $name)
 	{
-		return $this->client->update(
+		return $this->client->put(
 			'accounts/' . $accountId,
 			[],
 			['name' => $name]

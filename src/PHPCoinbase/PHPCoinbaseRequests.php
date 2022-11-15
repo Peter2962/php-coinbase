@@ -163,13 +163,17 @@ class PHPCoinbaseRequests
 			$newDefaultHeaders,
 			$headers
 		);
+
+		$body = in_array(strtolower($method), ['get', 'delete'])
+		? null
+		: json_encode($data);
 		
 		$requestUrl = $this->apiUrl . $pathWithVersion;
 		$request = new Request(
 			$method,
 			$requestUrl,
 			$mergedHeaders,
-			json_encode($data)
+			$body
 		);
 		$client = new Client();
 		return new PHPCoinbaseResponse($client->send($request));
