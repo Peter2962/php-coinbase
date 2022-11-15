@@ -21,7 +21,9 @@ class Buys
 	 */
 	public function listBuys(String $accountId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId
+		);
 	}
 
 	/**
@@ -33,18 +35,26 @@ class Buys
 	 */
 	public function getBuy(String $accountId, String $buyId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/buys/' . $buyId
+		);
 	}
 
 	/**
 	 * Buys a user-defined amount of any Coinbase supported asset.
 	 * 
 	 * @param $accountId String
+	 * @param $data Array
 	 * @access public
+	 * @see https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-buys#place-buy-order
 	 */
-	public function placeBuyOrder(String $accountId)
+	public function placeBuyOrder(String $accountId, Array $data)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/buys',
+			[],
+			$data
+		);
 	}
 
 	/**
@@ -56,7 +66,9 @@ class Buys
 	 */
 	public function commitBuy(String $accountId, String $buyId)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/buys/' . $buyId . '/commit'
+		);
 	}
 
 }

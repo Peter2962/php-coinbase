@@ -20,7 +20,7 @@ class PaymentMethods
 	 */
 	public function list()
 	{
-
+		return $this->client->get('payment-methods');
 	}
 
 	/**
@@ -31,7 +31,7 @@ class PaymentMethods
 	 */
 	public function show(String $paymentMethodId)
 	{
-
+		return $this->client->get('payment-methods/' . $paymentMethodId);
 	}
 
 }

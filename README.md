@@ -26,5 +26,15 @@ PHPCoinbase::setApiKey($apiKey);
 PHPCoinbase::setApiSecret($apiSecret);
 
 // OR
+
 $phpcoinbase = new PHPCoinbase($apiKey, $apiSecret);
 ```
+
+### Responses
+
+Each request returns a response object [PHPCoinbase\PHPCoinbaseResponse].
+The response object contains three methods:
+
+- getStatus(): _'OK'_
+- getStatusCode(): _'200'_
+- getData(): _{'data': 'my response'}_

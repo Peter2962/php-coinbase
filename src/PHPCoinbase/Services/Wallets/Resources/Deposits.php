@@ -21,7 +21,9 @@ class Deposits
 	 */
 	public function listDeposits(String $accountId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/deposits'
+		);
 	}
 
 	/**
@@ -33,18 +35,28 @@ class Deposits
 	 */
 	public function getDeposit(String $accountId, String $depositId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/deposits/' . $depositId
+		);
 	}
 
 	/**
 	 * Deposits user-defined amount of funds to a fiat account.
 	 * 
 	 * @param $accountId String
+	 * @param $params Array
 	 * @access public
+	 * @see https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-deposits#deposit-funds
 	 */
-	public function depositFunds(String $accountId)
+	public function depositFunds(String $accountId, Array $params)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/deposits',
+			[
+				'Content-Type' => 'application/json'
+			],
+			$params
+		);
 	}
 
 	/**
@@ -56,7 +68,9 @@ class Deposits
 	 */
 	public function commitDeposit(String $accountId, String $depositId)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/deposits/' . $depositId
+		);
 	}
 
 }
