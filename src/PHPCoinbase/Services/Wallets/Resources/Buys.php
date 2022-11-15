@@ -22,7 +22,7 @@ class Buys
 	public function listBuys(String $accountId)
 	{
 		return $this->client->get(
-			'accounts/' . $accountId
+			'accounts/' . $accountId . '/buys'
 		);
 	}
 
@@ -61,7 +61,7 @@ class Buys
 	 * Completes a buy that is created in commit: false state.
 	 * 
 	 * @param $accountId String
-	 * @param $buyId
+	 * @param $buyId String
 	 * @access public
 	 */
 	public function commitBuy(String $accountId, String $buyId)

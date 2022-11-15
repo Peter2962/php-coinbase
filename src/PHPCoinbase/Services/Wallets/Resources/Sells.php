@@ -21,7 +21,9 @@ class Sells
 	 */
 	public function listSells(String $accountId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/sells'
+		);
 	}
 
 	/**
@@ -33,30 +35,40 @@ class Sells
 	 */
 	public function getSell(String $accountId, String $sellId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/sells/' . $sellId
+		);
 	}
 
 	/**
 	 * Sells a user-defined amount of any Coinbase supported asset.
 	 * 
 	 * @param $accountId String
+	 * @param $data Array
 	 * @access public
+	 * @see https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-sells#place-sell-order
 	 */
-	public function placeSellOrder(String $accountId)
+	public function placeSellOrder(String $accountId, Array $data)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/sells',
+			[],
+			$data
+		);
 	}
 
 	/**
 	 * Completes a sell that is created in commit: false state.
 	 * 
 	 * @param $accountId String
-	 * @param $sellId
+	 * @param $sellId String
 	 * @access public
 	 */
 	public function commitSell(String $accountId, String $sellId)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/sells/' . $sellId . '/commit'
+		);
 	}
 
 }
