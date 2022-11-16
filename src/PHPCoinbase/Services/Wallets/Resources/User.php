@@ -21,7 +21,7 @@ class User
 	 */
 	public function getPublicUser(String $userId)
 	{
-
+		return $this->client->get('user/' . $userId);
 	}
 
 	/**
@@ -31,7 +31,7 @@ class User
 	 */
 	public function getCurrentUser()
 	{
-
+		return $this->client->get('user');
 	}
 
 	/**
@@ -41,17 +41,23 @@ class User
 	 */
 	public function getCurrentUserAuthInfo()
 	{
-
+		return $this->client->get('user/auth');
 	}
 
 	/**
 	 * Modify current user and their preferences.
 	 * 
+	 * @param $data Array
 	 * @access public
+	 * @see https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-users#update-current-user
 	 */
-	public function updateCurrentUser()
+	public function updateCurrentUser(Array $data)
 	{
-
+		return $this->client->update(
+			'user',
+			['Content-Type' => 'application/json'],
+			$data
+		);
 	}
 
 }
