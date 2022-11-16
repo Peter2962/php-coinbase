@@ -21,7 +21,9 @@ class Withdrawals
 	 */
 	public function listWithdrawals(String $accountId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/withdrawals'
+		);
 	}
 
 	/**
@@ -33,7 +35,9 @@ class Withdrawals
 	 */
 	public function getDeposit(String $accountId, String $withdrawalId)
 	{
-
+		return $this->client->get(
+			'accounts/' . $accountId . '/withdrawals/' . $withdrawalId
+		);
 	}
 
 	/**
@@ -44,19 +48,27 @@ class Withdrawals
 	 */
 	public function withdrawFunds(String $accountId)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/withdrawals',
+			[
+				'Content-Type' => 'application/json'
+			],
+			$params
+		);
 	}
 
 	/**
 	 * Completes a withdrawal that is created in commit: false state.
 	 * 
 	 * @param $accountId String
-	 * @param $withdrawId String
+	 * @param $withdrawalId String
 	 * @access public
 	 */
-	public function commitWithdraw(String $accountId, String $withdrawId)
+	public function commitWithdraw(String $accountId, String $withdrawalId)
 	{
-
+		return $this->client->post(
+			'accounts/' . $accountId . '/withdrawals/' . $withdrawalId
+		);
 	}
 
 }
