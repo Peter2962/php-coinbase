@@ -197,3 +197,30 @@ $buysResource->placeBuyOrder('account_id', $data);
 ```php
 $buysResource->commitBuy('account_id', 'buy_id');
 ```
+
+#### [Sells resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-sells)
+```php
+$sellsResource = $walletsService->sells;
+```
+
+#### List sells
+```php
+$sellsResource->listSells('account_id');
+```
+#### Show a sell
+```php
+$sellsResource->getSell('account_id', 'sell_id');
+```
+#### Place sell order
+[See: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-sells#place-sell-order]
+```php
+$data = [
+    'amount' => 50,
+    'currency' => 'ETH'
+];
+$sellsResource->placeSellOrder('account_id', $data);
+```
+#### Commit a sell
+```php
+$sellsResource->commitSell('account_id', 'sell_id');
+```
