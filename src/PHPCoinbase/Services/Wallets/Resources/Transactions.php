@@ -80,10 +80,11 @@ class Transactions
 	 * Requests money from an email address.
 	 * 
 	 * @param $accountId String
+	 * @param $data Array
 	 * @access public
 	 * @see https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-transactions#request-money
 	 */
-	public function requestMoney(String $accountId)
+	public function requestMoney(String $accountId, Array $data)
 	{
 		$data['type'] = 'request';
 		return $this->client->post(

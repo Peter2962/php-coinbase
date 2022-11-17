@@ -116,3 +116,58 @@ $addressResource->listTransactions('account_id');
 ```php
 $addressResource->createAddress('account_id', 'address_name');
 ```
+
+#### [Transactions resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-transactions)
+```php
+$transactionsResource = $walletsService->transactions;
+```
+
+#### List Transactions
+```php
+$transactionsResource->listTransactions('account_id');
+```
+#### Show a Transaction
+```php
+$transactionsResource->getTransaction('account_id', 'transaction_id');
+```
+#### Send Money
+[See: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-transactions#send-money]
+```php
+$data = [
+    'to' => 'blockchain address or email',
+    'amount' => 50
+];
+$transactionsResource->sendMoney('account_id', $data);
+```
+#### Transfer Money (between accounts)
+[See: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-transactions#transfer-money-between-accounts]
+```php
+$data = [
+    'to' => 'to_account_id',
+    'amount' => 50,
+    'currency' => 'ETH'
+];
+$transactionsResource->transferMoneyBetweenAccounts('account_id', $data);
+```
+#### Request Money
+[See: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-transactions#request-money]
+```php
+$data = [
+    'to' => 'to@email.com', // email
+    'amount' => 50,
+    'currency' => 'ETH'
+];
+$transactionsResource->requestMoney('account_id', $data);
+```
+#### Complete Request Money
+```php
+$transactionsResource->completeRequestMoney('account_id', 'transaction_id');
+```
+#### Re-send Request Money
+```php
+$transactionsResource->resendRequestMoney('account_id', 'transaction_id');
+```
+#### Cancel Request Money
+```php
+$transactionsResource->cancelRequestMoney('account_id', 'transaction_id');
+```
