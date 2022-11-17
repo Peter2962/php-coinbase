@@ -71,4 +71,19 @@ class Accounts
 		);
 	}
 
+	/**
+	 * [Not-tested]
+	 * Create new wallet.
+	 * 
+	 * @param $assetId String
+	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
+	 */
+	public function createWallet(String $assetId)
+	{
+		return $this->client->delete(
+			'accounts/' . $assetId
+		);
+	}
+
 }
