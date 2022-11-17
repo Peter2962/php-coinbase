@@ -17,8 +17,9 @@ class PaymentMethods
 	 * Lists payment methods.
 	 * 
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
-	public function list()
+	public function listPaymentMethods()
 	{
 		return $this->client->get('payment-methods');
 	}
@@ -28,8 +29,9 @@ class PaymentMethods
 	 * 
 	 * @param $paymentMethodId String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
-	public function show(String $paymentMethodId)
+	public function getPaymentMethod(String $paymentMethodId)
 	{
 		return $this->client->get('payment-methods/' . $paymentMethodId);
 	}

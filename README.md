@@ -280,3 +280,17 @@ $withdrawalsResource->withdrawFunds('account_id', $data);
 ```php
 $withdrawalsResource->commitWithdrawal('account_id', 'withdrawal_id');
 ```
+
+#### [Payment Methods resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-payment-methods)
+```php
+$paymentMethodsResource = $walletsService->paymentMethods;
+```
+
+#### List Payment Methods
+```php
+$paymentMethodsResource->listPaymentMethods('account_id');
+```
+#### Show a Payment Method
+```php
+$paymentMethodsResource->getPaymentMethod('account_id', 'payment_method_id');
+```
