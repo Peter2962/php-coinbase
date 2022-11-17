@@ -3,7 +3,7 @@
 Unofficial sdk library for Coinbase.
 Note: This library is still in development.
 
-For more information, please refer to the: [official documentation](https://developers.coinbase.com/api/v2).
+For more information, please refer to the [official documentation](https://developers.coinbase.com/api/v2).
 
 ## Installation
 
@@ -71,3 +71,26 @@ $data = [
     'name' => 'My new name'
 ];
 $usersResource->updateCurrentUser($data)
+```
+
+#### [Accounts resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-accounts)
+```php
+$accountsResource = $walletsService->accounts;
+```
+
+#### List accounts
+```php
+$accountsResource->listAccounts()
+```
+#### Update account
+```php
+$accountsResource->updateAccount('account_id', 'name');
+```
+#### Show an account
+```php
+$accountsResource->getAccount('account_id');
+```
+#### Delete account
+```php
+$accountsResource->deleteAccount('account_id');
+```
