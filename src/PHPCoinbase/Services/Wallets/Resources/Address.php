@@ -18,6 +18,7 @@ class Address
 	 * 
 	 * @param $accountId String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
 	public function listAddresses(String $accountId)
 	{
@@ -32,6 +33,7 @@ class Address
 	 * @param $accountId String
 	 * @param $addressId String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
 	public function getAddress(String $accountId, String $addressId)
 	{
@@ -46,6 +48,7 @@ class Address
 	 * @param $accountId String
 	 * @param $addressId String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
 	public function listTransactions(String $accountId, String $addressId)
 	{
@@ -58,15 +61,16 @@ class Address
 	 * Creates a new address for an account.
 	 * 
 	 * @param $accountId String
-	 * @param $accoutName String
+	 * @param $addressName String
 	 * @access public
+	 * @return PHPCoinbase\PHPCoinbaseResponse
 	 */
-	public function createAddress(String $accountId, String $accoutName)
+	public function createAddress(String $accountId, String $addressName)
 	{
 		return $this->client->post(
 			'accounts/'. $accountId .'/addresses/',
 			[],
-			['name' => $accoutName]
+			['name' => $addressName]
 		);
 	}
 

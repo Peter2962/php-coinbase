@@ -94,3 +94,25 @@ $accountsResource->getAccount('account_id');
 ```php
 $accountsResource->deleteAccount('account_id');
 ```
+
+#### [Addresses resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-addresses)
+```php
+$addressResource = $walletsService->address;
+```
+
+#### List addresses 
+```php
+$addressResource->listAddresses('account_id');
+```
+#### Show Address 
+```php
+$addressResource->getAddress('account_id', 'address_id');
+```
+#### List Transactions
+```php
+$addressResource->listTransactions('account_id');
+```
+#### Create Address
+```php
+$addressResource->createAddress('account_id', 'address_name');
+```
