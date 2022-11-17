@@ -171,3 +171,29 @@ $transactionsResource->resendRequestMoney('account_id', 'transaction_id');
 ```php
 $transactionsResource->cancelRequestMoney('account_id', 'transaction_id');
 ```
+
+#### [Buys resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-buys#buy-resource)
+```php
+$buysResource = $walletsService->buys;
+```
+
+#### List buys
+```php
+$buysResource->listBuys('account_id');
+```
+#### Show a buy
+```php
+$buysResource->getBuy('account_id', 'buy_id');
+```
+#### Place buy order
+```php
+$data = [
+    'amount' => 50,
+    'currency' => 'ETH'
+];
+$buysResource->placeBuyOrder('account_id', $data);
+```
+#### Commit a buy
+```php
+$buysResource->commitBuy('account_id', 'buy_id');
+```
