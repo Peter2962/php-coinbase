@@ -224,3 +224,59 @@ $sellsResource->placeSellOrder('account_id', $data);
 ```php
 $sellsResource->commitSell('account_id', 'sell_id');
 ```
+
+#### [Deposits resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-deposits)
+```php
+$depositsResource = $walletsService->deposits;
+```
+
+#### List Deposits
+```php
+$depositsResource->listDeposits('account_id');
+```
+#### Show a Deposit
+```php
+$depositsResource->getDeposit('account_id', 'deposit_id');
+```
+#### Deposit Funds
+[See: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-deposits#deposit-funds]
+```php
+$data = [
+    'amount' => 50,
+    'currency' => 'ETH',
+    'payment_method' => 'payment_method_id' 
+];
+$depositsResource->depositFunds('account_id', $data);
+```
+#### Commit a Deposit
+```php
+$depositsResource->commitDeposit('account_id', 'deposit_id');
+```
+
+#### [Withdrawals resource](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-withdrawals)
+```php
+$withdrawalsResource = $walletsService->withdrawals;
+```
+
+#### List Withdrawals
+```php
+$withdrawalsResource->listWithdrawals('account_id');
+```
+#### Show a Withdrawal
+```php
+$withdrawalsResource->getWithdrawal('account_id', 'withdrawal_id');
+```
+#### Withdraw Funds
+[See: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-withdrawals#withdraw-funds]
+```php
+$data = [
+    'amount' => 50,
+    'currency' => 'ETH',
+    'payment_method' => 'payment_method_id' 
+];
+$withdrawalsResource->withdrawFunds('account_id', $data);
+```
+#### Commit a Withdrawal
+```php
+$withdrawalsResource->commitWithdrawal('account_id', 'withdrawal_id');
+```

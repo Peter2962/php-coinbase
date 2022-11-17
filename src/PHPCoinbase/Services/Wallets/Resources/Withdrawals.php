@@ -33,7 +33,7 @@ class Withdrawals
 	 * @param $withdrawalId String
 	 * @access public
 	 */
-	public function getDeposit(String $accountId, String $withdrawalId)
+	public function getWithdrawal(String $accountId, String $withdrawalId)
 	{
 		return $this->client->get(
 			'accounts/' . $accountId . '/withdrawals/' . $withdrawalId
@@ -64,7 +64,7 @@ class Withdrawals
 	 * @param $withdrawalId String
 	 * @access public
 	 */
-	public function commitWithdraw(String $accountId, String $withdrawalId)
+	public function commitWithdrawal(String $accountId, String $withdrawalId)
 	{
 		return $this->client->post(
 			'accounts/' . $accountId . '/withdrawals/' . $withdrawalId
